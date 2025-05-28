@@ -10,7 +10,7 @@ import java.util.Objects;
  * unique identifier, personal details, and registration information.
  * </p>
  * 
- * @author Example Author
+ * @author Alfredo Rueda
  * @version 1.0
  */
 public class Persona {
