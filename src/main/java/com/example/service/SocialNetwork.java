@@ -10,19 +10,35 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * Interface defining the operations of a social network.
- * <p>
- * This interface provides methods for managing users and their connections
+ * This interface defines the core operations of a simple social network.
+ *
+ * <p><b>Note:</b> In production-grade software, interfaces are designed to expose only abstract
+ * contracts, avoiding any implementation-specific guidance. This promotes encapsulation, flexibility,
+ * and clear separation of concerns.
+ *
+ * <p>However, in this educational context, the method-level documentation intentionally includes
+ * detailed implementation hints. These notes are designed to help students:
+ * <ul>
+ *   <li>Understand the trade-offs between different collection types</li>
+ *   <li>Recognize the importance of total ordering in sorted structures like TreeSet or TreeMap</li>
+ *   <li>Implement correct {@code equals()} and {@code hashCode()} methods for use in hash-based structures</li>
+ *   <li>Make informed decisions about performance, complexity, and correctness</li>
+ * </ul>
+ *
+ * <p>These design decisions aim to support clarity, consistency, and learning during implementation.
+ * Each method includes annotations about time complexity and appropriate data structures to
+ * reinforce best practices when working with Java's Collections Framework.
+ *
+ * <p>This interface provides methods for managing users and their connections
  * in a social network. It includes operations for user registration, connection
  * management, and graph traversal algorithms for finding paths between users.
- * </p>
  */
 public interface SocialNetwork {
 
     /**
      * Registers a new user in the social network.
      * <p>
-     * Time Complexity: O(1) - Using a HashMap for storage provides constant time 
+     * Time Complexity: O(1) - Using a LinkedHashMap for storage provides constant time 
      * complexity for user registration operations.
      * </p>
      *
@@ -53,6 +69,11 @@ public interface SocialNetwork {
      * <p>
      * Time Complexity: O(1) - Accessing the connections of a user from a HashMap
      * is a constant time operation.
+     * </p>
+     * <p>
+     * Implementation Note: The returned set is typically a TreeSet which orders connections
+     * by name and then by ID. This ensures a consistent presentation of connections
+     * and demonstrates proper use of Comparator-based ordering in sorted collections.
      * </p>
      *
      * @param id the ID of the user
