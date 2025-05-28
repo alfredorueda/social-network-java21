@@ -1,4 +1,4 @@
-# Java 21 Collections Framework Demo
+# Java 21 Collections Framework Social Network exercise
 
 ![Java Version](https://img.shields.io/badge/Java-21-orange)
 ![License](https://img.shields.io/badge/License-MIT-blue)
