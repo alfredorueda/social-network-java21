@@ -71,7 +71,7 @@ public interface SocialNetwork {
      * is a constant time operation.
      * </p>
      * <p>
-     * Implementation Note: The returned set is typically a TreeSet which orders connections
+     * Implementation Note: The returned set should be a TreeSet which orders connections
      * by name and then by ID. This ensures a consistent presentation of connections
      * and demonstrates proper use of Comparator-based ordering in sorted collections.
      * </p>
@@ -121,13 +121,20 @@ public interface SocialNetwork {
     int getConnectionLevelBetween(String id1, String id2);
 
     /**
-     * Retrieves a set of all users ordered by their registration date.
-     * <p>
-     * Time Complexity: O(n) where n is the number of users. This operation requires
-     * iterating through all users to create an ordered set.
-     * </p>
+     * Retrieves all users in the order they registered.
      *
-     * @return a set of users ordered by registration date
+     * <p>This method leverages the insertion-order property of the underlying
+     * {@code LinkedHashMap}, which stores users in the exact order in which they were registered.
+     * As a result, this method does not perform any additional sorting at runtime.
+     *
+     * <p><b>Time Complexity:</b> O(n), where n is the number of registered users.
+     * The method performs a linear traversal over the keys of the map to build the returned set.
+     *
+     * <p><b>Design Note:</b> Although it would be possible to return the internal {@code keySet()}
+     * directly in constant time, we deliberately avoid exposing internal structures. Returning a
+     * defensive copy helps preserve encapsulation and protects the integrity of the underlying data.
+     *
+     * @return a set of users ordered by their registration date (insertion order)
      */
     Set<Persona> getUsersOrderedByRegistration();
 }
